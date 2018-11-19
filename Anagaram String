@@ -1,0 +1,51 @@
+import java.io.*;
+import java.util.*;
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+
+class Solution {
+ public static void main(String[] args) {
+    String s = "anagram";
+    String s2 = new String();
+    System.out.println(ana(s,s2,3));
+  }
+  /* Main Method */
+  public static boolean ana (String str1, String str2, int k){
+    boolean anagram =false;
+    int Max_char = 26;
+    if ((str1 !=null && !str1.trim().isEmpty())  &&(str2 !=null && !str2.trim().isEmpty())){
+    
+    if (str1.length()== str2.length()){
+      
+      int [] arr = new int[Max_char];
+      String s1 = str1.toLowerCase().trim();
+      String s2 = str2.toLowerCase().trim();
+    for (int i = 0; i<s1.length(); i++){
+      arr[s1.charAt(i)-'a']++;
+    }
+      int count =0;
+    for (int j =0; j<s2.length(); j++){
+      if (arr[s2.charAt(j)- 'a']>0){
+        arr[s2.charAt(j)- 'a']-- ;
+      }else {
+        System.out.println("Count number" + count);
+        count++;
+      }
+      anagram = count <= k ? true : false;
+    }
+      
+    }
+    }else{
+      System.out.println("Strings are not valid");
+
+    }
+    return anagram;
+  }
+  
+  /* Class */
+}
