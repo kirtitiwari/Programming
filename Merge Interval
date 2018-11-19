@@ -1,0 +1,107 @@
+import java.io.*;
+import java.util.*;
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+class Interval{
+  int start;
+  int end;
+  public Interval  (int start, int end){
+    this.start = start;
+    this.end = end;
+    
+  }
+   public Interval(){
+     start=0;
+     end=0;
+   }
+  
+  
+}
+class Solution {
+ 
+  
+/* -- main method */  
+public static void main(String[] args) {
+  
+ /* Given [1,3],[2,6],[8,10],[15,18] */
+  Interval i1 = new Interval(1,3);
+  Interval i2 = new Interval(2,6);
+  Interval i3 = new Interval(8,10);
+  Interval i4 = new Interval(15,18);
+  
+  List<Interval> in= new ArrayList<Interval>();
+  in.add(i1);
+  in.add(i2);
+  in.add(i3);
+  in.add(i4);
+  
+  for (Interval i : in)
+  System.out.println(i.start + " " + i.end);
+  
+  List<Interval> a1 = merge (in);
+  for (Interval a : a1)
+  System.out.println(a.start + " " + a.end);
+  
+  
+  }
+  
+/* -- functional method */
+
+public static List<Interval> merge (List<Interval>list){
+  List<Interval> result = new ArrayList<Interval>();
+  if (list.size()==0 && list==null)
+    return result;
+  Collections.sort(list, new Comparator<Interval>(){
+    public int compare(Interval i1, Interval i2){
+      if (i1.start != i2.start)
+        return i1.start - i2.start;
+      else 
+        return i1.end - i2.end;
+      
+    }
+   
+});
+  
+ Interval pre = list.get(0);
+   for(int k = 1 ; k < list.size(); k++){
+     Interval j = list.get(k);
+     if (pre.end< j.start){
+       pre = j;
+     }else{
+       Interval curr = new Interval (pre.start, Math.max(pre.end, j.end));
+       pre = curr;
+       
+     }
+     result.add(pre);
+   } 
+
+  
+  return result;
+}
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+}
