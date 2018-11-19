@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.*;
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more cla1assaes, simply define them inline.
+ */
+
+class Solution {
+  
+  public static void main(String[] args) {
+    Integer [] a = { 1, 3, 6 , 7 ,1 ,3,8 };
+    int [] b = {};
+ /*    boolean duplicate = dp2(a); */
+/*    System.out.println(duplicate); */
+       dp2 (a); 
+    
+  }
+
+
+public static void dp2(Integer [] a){
+  HashMap <Integer,Integer> mp = new HashMap<Integer, Integer> ();
+  for (Integer a1 :a ){
+    mp.put(a1, mp.containsKey(a1) ? mp.get(a1)+1 : 1);
+  }
+  for (Map.Entry<Integer, Integer> entry : mp.entrySet()) {
+    if (entry.getValue() >1){
+    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+    }
+}
+  
+
+}
+  
+}
