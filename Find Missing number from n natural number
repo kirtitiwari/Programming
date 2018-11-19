@@ -1,0 +1,55 @@
+import java.io.*;
+import java.util.*;
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+
+class Solution {
+  public static void main(String[] args) {
+    int a [] = {1,2,3,4,6};
+    int ms = missingnumber(a,5);
+    System.out.println("missing number" + ms);
+    
+    List<Integer> list = mn(a,5);
+    System.out.println(list );
+    
+    
+  }
+  
+  /* sum to natural number n - n*(n+1)/2  and get only 1 missing number*/
+  
+  public static int missingnumber(int a[], int n){
+    int total = (n+1)*(n+2)/2;
+    System.out.println(total);
+    for ( int a1: a){
+    total -= a1;
+      System.out.println(total);
+    }
+  return total;
+  }
+    
+
+/* BitSet is like register setting value 0 or 1 for index.
+Starting index 0 and last index (n-1) through this method u can find more than 1 missing number */
+
+public static ArrayList<Integer> mn(int a[], int n){
+  ArrayList<Integer> al = new ArrayList<Integer>();
+ int missnum = n - a.length;
+ BitSet bs = new BitSet(n);
+  for (int i : a){
+  bs.set(i-1);
+  }
+  int missindex= 0;
+  for ( int j =0; j<=missnum; j++){
+    int num = bs.nextClearBit(missindex);   
+  System.out.println("index is" + num );
+    al.add(++num);
+  }
+  return al;
+}
+
+}
