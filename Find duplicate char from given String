@@ -1,0 +1,64 @@
+import java.io.*;
+import java.util.*;
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+
+class Solution {
+  public static void main(String[] args) {
+    String s = "Java";
+    duplicateChar(s);
+    System.out.println(duplicate(s));
+    
+  }
+
+  /* main method end */
+  
+  public static void duplicateChar(String str){
+    
+  if (str !=null && !str.trim().isEmpty()){
+    Map<Character, Integer> mp = new HashMap<Character,Integer>();
+  char [] ch = str.toCharArray();
+    for (char c : ch){
+      mp.put(c, mp.containsKey(c)? mp.get(c)+1 :1);
+    }
+       
+for (Map.Entry<Character, Integer> e : mp.entrySet()){
+      if (e.getValue()>1){
+      System.out.println(e.getKey() + "=" + e.getValue());
+      }
+}
+       
+    
+  }
+    else{
+ System.out.println("String is not valid");
+ }   
+       
+  }
+  
+  /* method end */
+  
+  public static boolean duplicate(String str){
+   boolean con = false;  
+    if (str !=null && !str.trim().isEmpty()){
+      char [] ch = str.toCharArray();
+      Set<Character> se = new HashSet<Character>();
+      for (char c : ch){
+        se.add(c);
+      }
+      System.out.println(se.size());
+      con = se.size()< str.length() ? true : false ;
+    }else{
+      System.out.println("Not valid String");
+      con = false;
+    }
+    
+  return con;  
+    
+  }
+}
