@@ -1,0 +1,38 @@
+class Student implements Comparable<Student>
+{
+    private String name;
+    protected List<Integer> marksList = new ArrayList<Interger>(); 
+
+
+    Student(String name) 
+    {
+        this.name = name;
+    }   
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void addmark(int mark)
+    {
+        marksList.add(mark);
+    }
+
+    public List<Integer> getmarkList()
+    {
+        return markList;
+    }
+
+    // Reverse of natural order of String.
+    public int compareTo(Student otherStudent)
+    {
+      return -1 * this.name.compareTo(otherStudent.getName());
+    }
+
+   
